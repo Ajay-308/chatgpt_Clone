@@ -7,6 +7,7 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/db.js");
 //routes path
 const authRoutes = require("./routes/authRoutes.js");
+const errorHandler = require("./middleware/errorMiddleware.js");
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extension: false }));
+app.use(errorHandler);
 
 app.use(morgan("dev"));
 
